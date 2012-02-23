@@ -1,0 +1,22 @@
+\lstnewenvironment{java}[1][]{
+	\lstset{
+		language=java,
+		basicstyle=\ttfamily\small\setstretch{1},
+		stringstyle=\color{red},
+		showstringspaces=false,
+		alsoletter={1234567890},
+		otherkeywords={\ , \}, \{},
+		numbers=left, 
+		numberstyle=\tiny,
+		keywordstyle=\color{sblue},
+		emph={abstract,assert,boolean,break,byte,case,catch,char,class,const,continue,default,do,double,else,enum,extends,final,finally,float,for,goto,if,implements,import,instanceof,int,interface,long,native,new,package,private,protected,public,return,short,static,strictfp,super,switch,synchronized,this,throw,throws,transient,try,void,volatile,while},
+		emphstyle=\color{sblue}\bfseries,
+		emph={[2]true, false, null, this},
+		emphstyle=[2]\color{green},
+		emph={[3]import},
+		emphstyle=[3]\color{blue},
+		upquote=true,
+		morecomment=[s]{/**}{*/},
+		commentstyle=\color{green}\slshape,
+		framexleftmargin=1mm, framextopmargin=1mm, frame=shadowbox, rulesepcolor=\color{lblue},#1
+	}}{}

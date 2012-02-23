@@ -1,0 +1,22 @@
+\lstnewenvironment{cpp}[1][]{
+	\lstset{
+		language=cxx,
+		basicstyle=\ttfamily\small\setstretch{1},
+		stringstyle=\color{red},
+		showstringspaces=false,
+		alsoletter={1234567890},
+		otherkeywords={\ , \}, \{},
+		numbers=left, 
+		numberstyle=\tiny,
+		keywordstyle=\color{sblue},
+		emph={and,and_eq,alignas,alignof,asm,auto,bitand,bitor,bool,break,case,catch,char,char16_t,char32_t,class,compl,const,constexpr,const_cast,continue,decltype,default,delete,double,dynamic_cast,else,enum,explicit,export,extern,false,float,for,friend,goto,if,inline,int,long,mutable,namespace,new,noexcept,not,not_eq,nullptr,operator,or,or_eq,private,protected,public,register,reinterpret_cast,return,short,signed,sizeof,static,static_assert,static_cast,struct,switch,template,this,thread_local,throw,true,try,typedef,typeid,typename,union,unsigned,using,virtual,void,volatile,wchar_t,while,xor,xor_eq},
+		emphstyle=\color{sblue}\bfseries,
+		emph={[2]true, false, null, this},
+		emphstyle=[2]\color{green},
+		emph={[3]import},
+		emphstyle=[3]\color{blue},
+		upquote=true,
+		morecomment=[s]{/**}{*/},
+		commentstyle=\color{green}\slshape,
+		framexleftmargin=1mm, framextopmargin=1mm, frame=shadowbox, rulesepcolor=\color{lblue},#1
+	}}{}

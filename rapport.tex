@@ -1,0 +1,27 @@
+\documentclass[french,a4paper,oneside,final,titlepage,12pt]{scrartcl}
+% article, report, book, lettre
+% scrartcl, scrreprt, scrbook, scrlettr
+
+\input{preamble}
+
+\begin{document}
+
+\thispagestyle{empty}
+\maketitle
+\thispagestyle{empty}
+\tableofcontents
+\listoftables
+\listoffigures
+\newpage
+\input{example}
+\appendix
+\newpage
+\nocite{*}
+\addcontentsline{toc}{section}{Références}	
+\printbibliography
+\newpage
+\addcontentsline{toc}{section}{Glossaire}	
+\printglossaries
+
+\end{document}
+

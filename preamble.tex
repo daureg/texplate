@@ -1,0 +1,182 @@
+\usepackage{ifxetex}
+\ifxetex
+% Langue et police
+\usepackage{polyglossia}
+\setmainlanguage{french}
+\XeTeXdefaultencoding utf-8
+\usepackage{xltxtra}
+\setmainfont{Linux Libertine O}
+\fontspec[Numbers={OldStyle}]{Linux Libertine O}
+
+% Ligatures historiques en italique
+\newfontface\italig[Ligatures={Required,Common,Historical,Discretionary}]{Linux Libertine O Italic}
+\renewcommand{\itshape}[1]{{\italig #1}}
+
+\newcommand{\bsc}[1]{{\textsc{#1}}}
+
+\providecommand{\madame}{M\fup{me}$\:$}
+% D'après xmemoire.cls
+\providecommand{\ier}{\fup{er}$\:$}
+\providecommand{\iere}{\fup{re}$\:$}
+\providecommand{\ieres}{\fup{res}$\:$}
+\providecommand{\ieme}{\fup{e}$\:$}
+\providecommand{\no}{\fup{o}$\:$}
+% Bonnes notes, sans exposant.
+\makeatletter
+\renewcommand\@makefntext[1]{%
+\noindent\makebox[2em][r]{\@thefnmark.\space}#1}
+\makeatother
+
+\else
+% Pour pdflatex
+\usepackage[frenchb]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{palatino}
+
+\fi
+
+
+% Exposant avec \fup
+\usepackage{relsize}
+\makeatletter
+\newdimen\M@ht
+% Si xltxtra.sty est chargé, on essaie d'utiliser les vraies lettres supérieures d'OpenType
+\newcommand*{\fup}[1]{%
+\@ifundefined{@@textsuperscript}%
+{\settoheight{\M@ht}{M}%
+\raisebox{.65\M@ht}{\relscale{.60}{#1}}}%
+{\@@textsuperscript{#1}}}%
+\makeatother
+
+
+% divers paquets
+\usepackage{numprint}
+\usepackage{url}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{capt-of}
+\usepackage{sidecap}
+\usepackage[svgnames,table]{xcolor}
+\usepackage{pifont,picins}
+\usepackage{lettrine}
+\renewcommand{\LettrineFontHook}{\color[gray]{0.5}}
+\usepackage{epigraph}
+\setlength{\epigraphwidth}{9cm}
+\usepackage{graphicx}
+\graphicspath{{img/}}
+
+% En tête et pied de page
+\usepackage{fancyhdr}
+\makeatletter
+\def\footrule{{\color[gray]{.3}\if@fancyplain\let\footrulewidth\plainfootrulewidth\fi
+\hrule\@height\footrulewidth\@width\headwidth}}
+\makeatother
+\fancyhead{} % clear all header fields
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[RO,LE]{\slshape \nouppercase{\rightmark}}
+%\fancyhead[C]{\bfseries TITRE}
+\fancyhead[LO,RE]{\bfseries \large \nouppercase{\leftmark}}
+
+\fancyfoot{} % clear all footer fields
+\renewcommand{\footrulewidth}{0.4pt}
+\fancyfoot[LE,RO]{\thepage}
+\fancyfoot[LO,RE]{Géraud \textsc{Le Falher}}
+\fancyfoot[C]{\today}
+\pagestyle{fancy}
+
+% Liens et métadonnées
+\title{eIMAGE — TP1}
+\subtitle{Algorithme de \textsc{Bresenham}
+\\ \vspace{1cm}
+\includegraphics[width=12cm]{brique.pdf}\\
+\captionof{figure}[cours]{long}
+\vspace{1cm}
+}
+\author{Géraud \textsc{Le Falher} \and Florent \textsc{Rigaud}}
+
+
+\usepackage[pdfencoding=auto,draft=false]{hyperref}
+\hypersetup{
+	bookmarks=true,
+	unicode=true,
+	pdfdisplaydoctitle=true,
+	pagebackref=true
+	pdftitle={TP1 de eIMAGE},
+	pdfauthor={Géraud Le Falher, Florent Rigaud},
+	pdfkeywords={image, }{segment, }{bresenham},
+	pdflang={fr}
+	pdfsubject={Algorithme de Bresenham},   % subject of the document
+	%pdfcreator={Creator},   % creator of the document
+	%pdfproducer={Producer}, % producer of the document
+	%pdfnewwindow=true,      % links in new window
+	%colorlinks=false,       % false: boxed links; true: colored links
+	%linkcolor=red,          % color of internal links
+	%citecolor=green,        % color of links to bibliography
+	%filecolor=magenta,      % color of file links
+	%urlcolor=cyan           % color of external links
+}
+
+% Divers
+\parskip 10pt
+\newcolumntype{M}[1]{>{\raggedright}m{#1}}
+\widowpenalty=10000
+\clubpenalty=10000
+\renewcommand{\labelitemi}{\ding{167}}
+
+% Tracé de courbes
+\usepackage{pgfplots}
+\pgfplotsset{width=\textwidth,compat=1.5}
+
+% Glossaire
+\usepackage[xindy]{glossaries}
+\makeglossaries
+\input{glossaire}
+
+% Bibliographie
+\usepackage{csquotes}
+\usepackage[style=numeric,backend=biber,sortlocale=fr,date=comp,language=french,hyperref=true,useauthor=true,useeditor=false]{biblatex}
+\addbibresource{rapport.bib}
+%        Bibliographie d'xmemoire.cls
+%% Redéfinir les mots-clefs pour la biblio, et ajouter un "art. cit."
+\DefineBibliographyStrings{french}{
+	opcit = \iffieldequalstr{entrytype}{article}{art\adddotspace cit\adddot}{\emph{op\adddotspace cit}\adddot},
+	idem = {\emph{idem}},
+	ibidem = {\emph{ibid\adddot}},
+	byeditor = {\'ed\adddotspace \smartof{} },%
+}
+% Virgules au lieu de points dans la biblio.
+\renewcommand*{\newunitpunct}{\addcomma\space}
+% Tripoter le style standard pour avoir une virgule au lieu de deux points avant la date.
+\renewbibmacro*{publisher+location+date}{%
+\printlist{location}%
+\iflistundef{publisher}
+{\setunit*{\addspace}}
+{\setunit*{\addcomma\space}}%
+\printlist{publisher}%
+\setunit*{\addcomma\space}%
+\printfield{year}%
+\newunit
+} 
+%% Il est possible de redéfinir des sections dans la biblio 
+% Exemple : \defbibheading{corpus}{\subsection*{-A- Textes du corpus}}
+
+% Pour afficher du code
+\usepackage{listings}
+\usepackage{textcomp}
+\usepackage{setspace}
+\renewcommand{\lstlistlistingname}{listings}
+\renewcommand{\lstlistingname}{listing}
+\definecolor{gray}{gray}{0.5}
+\definecolor{green}{rgb}{0,0.5,0}
+\definecolor{lblue}{rgb}{0.5,0.5,1}
+\definecolor{sblue}{rgb}{0.1,0.1,0.6}
+\input{java}
+
+% macro pour remplacer les tabulations par un espace horizontal dans verbatim
+\makeatletter
+{\catcode`\^^I=\active
+\gdef\verbatim{\catcode`\^^I=\active\def^^I{\hspace*{2em}}%
+\@verbatim \frenchspacing\@vobeyspaces \@xverbatim}}
+\makeatother
