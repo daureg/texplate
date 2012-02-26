@@ -10,6 +10,7 @@
 *.lot
 *.out
 *.pdf
+*.synctex.gz
 *.toc
 *.xdy
 *.xml
