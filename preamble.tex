@@ -67,50 +67,15 @@
 \usepackage{graphicx}
 \graphicspath{{img/}}
 
-% En tête et pied de page
-\usepackage{fancyhdr}
-\makeatletter
-\def\footrule{{\color[gray]{.3}\if@fancyplain\let\footrulewidth\plainfootrulewidth\fi
-\hrule\@height\footrulewidth\@width\headwidth}}
-\makeatother
-\fancyhead{} % clear all header fields
-\renewcommand{\headrulewidth}{0.4pt}
-\fancyhead[RO,LE]{\slshape \nouppercase{\rightmark}}
-%\fancyhead[C]{\bfseries TITRE}
-\fancyhead[LO,RE]{\bfseries \large \nouppercase{\leftmark}}
-
-\fancyfoot{} % clear all footer fields
-\renewcommand{\footrulewidth}{0.4pt}
-\fancyfoot[LE,RO]{\thepage}
-\fancyfoot[LO,RE]{Géraud \textsc{Le Falher}}
-\fancyfoot[C]{\today}
-\pagestyle{fancy}
-
-% Liens et métadonnées
-\title{eIMAGE — TP1}
-\subtitle{Algorithme de \textsc{Bresenham}
-\\ \vspace{1cm}
-\includegraphics[width=12cm]{brique.pdf}\\
-\captionof{figure}[cours]{long}
-\vspace{1cm}
-}
-\author{Géraud \textsc{Le Falher} \and Florent \textsc{Rigaud}}
-
+\input{header}
 
 \usepackage[pdfencoding=auto,draft=false]{hyperref}
+\input{info}
 \hypersetup{
 	bookmarks=true,
 	unicode=true,
 	pdfdisplaydoctitle=true,
 	pagebackref=true
-	pdftitle={TP1 de eIMAGE},
-	pdfauthor={Géraud Le Falher, Florent Rigaud},
-	pdfkeywords={image, }{segment, }{bresenham},
-	pdflang={fr}
-	pdfsubject={Algorithme de Bresenham},   % subject of the document
-	%pdfcreator={Creator},   % creator of the document
-	%pdfproducer={Producer}, % producer of the document
-	%pdfnewwindow=true,      % links in new window
 	%colorlinks=false,       % false: boxed links; true: colored links
 	%linkcolor=red,          % color of internal links
 	%citecolor=green,        % color of links to bibliography

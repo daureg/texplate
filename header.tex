@@ -1,0 +1,20 @@
+% En tête et pied de page
+\usepackage{fancyhdr}
+
+\makeatletter
+\def\footrule{{\color[gray]{.3}\if@fancyplain\let\footrulewidth\plainfootrulewidth\fi
+\hrule\@height\footrulewidth\@width\headwidth}}
+\makeatother
+
+\fancyhead{}
+\renewcommand{\headrulewidth}{0.3pt}
+\fancyhead[RO,LE]{\slshape \nouppercase{\rightmark}}
+\fancyhead[C]{\bfseries FTITRE}
+\fancyhead[LO,RE]{\bfseries \large \nouppercase{\leftmark}}
+
+\fancyfoot{}
+\renewcommand{\footrulewidth}{0.3pt}
+\fancyfoot[LE,RO]{\thepage}
+\fancyfoot[C]{\today}
+\fancyfoot[LO,RE]{FAUTHORS}
+\pagestyle{fancy}
