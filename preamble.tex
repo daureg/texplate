@@ -12,31 +12,8 @@
 \newfontface\italig[Ligatures={Required,Common,Historical,Discretionary}]{Linux Libertine O Italic}
 \renewcommand{\itshape}[1]{{\italig #1}}
 
+% Comme avec babel
 \newcommand{\bsc}[1]{{\textsc{#1}}}
-
-\providecommand{\madame}{M\fup{me}$\:$}
-% D'après xmemoire.cls
-\providecommand{\ier}{\fup{er}$\:$}
-\providecommand{\iere}{\fup{re}$\:$}
-\providecommand{\ieres}{\fup{res}$\:$}
-\providecommand{\ieme}{\fup{e}$\:$}
-\providecommand{\no}{\fup{o}$\:$}
-% Bonnes notes, sans exposant.
-\makeatletter
-\renewcommand\@makefntext[1]{%
-\noindent\makebox[2em][r]{\@thefnmark.\space}#1}
-\makeatother
-
-\else
-% Pour pdflatex
-\usepackage[frenchb]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
-\usepackage{palatino}
-
-\fi
-
 
 % Exposant avec \fup
 \usepackage{relsize}
@@ -50,6 +27,31 @@
 {\@@textsuperscript{#1}}}%
 \makeatother
 
+\else
+
+% Pour pdflatex
+\usepackage[frenchb]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{palatino}
+
+\fi
+
+% Abbréviations avec exposant.
+\providecommand{\madame}{M\fup{me}$\:$}
+% D'après xmemoire.cls
+\providecommand{\ier}{\fup{er}$\:$}
+\providecommand{\iere}{\fup{re}$\:$}
+\providecommand{\ieres}{\fup{res}$\:$}
+\providecommand{\ieme}{\fup{e}$\:$}
+\providecommand{\no}{\fup{o}$\:$}
+
+% Bonnes notes, sans exposant.
+\makeatletter
+\renewcommand\@makefntext[1]{%
+\noindent\makebox[2em][r]{\@thefnmark.\space}#1}
+\makeatother
 
 % divers paquets
 \usepackage{numprint}
