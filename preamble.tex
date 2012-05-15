@@ -34,7 +34,6 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
-\usepackage{palatino}
 
 \fi
 
@@ -68,6 +67,8 @@
 \setlength{\epigraphwidth}{9cm}
 \usepackage{graphicx}
 \graphicspath{{img/}}
+%pour les lettres greques majuscules
+\usepackage{upgreek}
 
 \input{header}
 
@@ -86,7 +87,7 @@
 }
 
 % Divers
-\parskip 10pt
+%\usepackage{parskip} %pas avec KOMA
 \newcolumntype{M}[1]{>{\raggedright}m{#1}}
 \widowpenalty=10000
 \clubpenalty=10000
@@ -125,8 +126,8 @@
 \setunit*{\addcomma\space}%
 \printfield{year}%
 \newunit
-} 
-%% Il est possible de redéfinir des sections dans la biblio 
+}
+%% Il est possible de redéfinir des sections dans la biblio
 % Exemple : \defbibheading{corpus}{\subsection*{-A- Textes du corpus}}
 
 % Pour afficher du code
